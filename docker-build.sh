@@ -253,7 +253,6 @@ init_variables() {
     echo "Detected digitalocean registry."
     INPUT_USERNAME=$DOCTL_TOKEN
     INPUT_PASSWORD=$DOCTL_TOKEN
-    NAMESPACE=$DO_REGISTRY_NAMESPACE
   fi
 
   # split tags (to allow multiple comma-separated tags)
