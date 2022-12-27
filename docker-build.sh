@@ -251,6 +251,12 @@ init_variables() {
     fi
   fi
 
+  if _is_digitalocean_registry; then
+    echo "Detected digitalocean registry."
+    INPUT_USERNAME=$DOCTL_TOKEN
+    INPUT_PASSWORD=$DOCTL_TOKEN
+  fi
+
   # split tags (to allow multiple comma-separated tags)
   IFS=, read -ra INPUT_IMAGE_TAG <<< "$INPUT_IMAGE_TAG"
   if ! _set_namespace; then
