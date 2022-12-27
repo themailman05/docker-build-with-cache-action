@@ -250,11 +250,6 @@ init_variables() {
         INPUT_SESSION=$AWS_SESSION_TOKEN
     fi
   fi
-  
-  if _is_digitalocean_registry; then
-    INPUT_USERNAME=$DOCTL_TOKEN
-    INPUT_PASSWORD=$DOCTL_TOKEN
-  fi
 
   # split tags (to allow multiple comma-separated tags)
   IFS=, read -ra INPUT_IMAGE_TAG <<< "$INPUT_IMAGE_TAG"
