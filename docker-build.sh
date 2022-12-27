@@ -13,7 +13,7 @@ _has_value() {
 }
 
 _is_digitalocean_registry() {
-  [ "$INPUT_REGISTRY" =~ registry.digitalocean.com\/(\S*) ]
+  [ "$INPUT_REGISTRY" =~ ^registry.digitalocean.com$ ]
 }
 
 _is_docker_hub() {
