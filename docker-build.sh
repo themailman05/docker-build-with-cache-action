@@ -211,7 +211,7 @@ _docker_login() {
   if _is_aws_ecr; then
     { _login_to_aws_ecr && _create_aws_ecr_repos; } || return 1
   else
-    echo "${INPUT_PASSWORD}" | docker login -u "${INPUT_REGISTRY%% /*}" "${INPUT_USERNAME}" --password-stdin "${INPUT_REGISTRY}" || return 1
+    echo "${INPUT_PASSWORD}" | docker login -u "${INPUT_USERNAME}" --password-stdin "${INPUT_REGISTRY}" "${INPUT_REGISTRY%% /*}"  || return 1
   fi
   trap logout_from_registry EXIT
 }
@@ -253,8 +253,8 @@ init_variables() {
 
   if _is_digitalocean_registry; then
     echo "Detected digitalocean registry."
-    INPUT_USERNAME=test
-    INPUT_PASSWORD=test
+    INPUT_USERNAME=$DOCTL_TOKEN
+    INPUT_PASSWORD=$DOCTL_TOKEN
   fi
 
   # split tags (to allow multiple comma-separated tags)
