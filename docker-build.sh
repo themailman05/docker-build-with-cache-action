@@ -253,8 +253,8 @@ init_variables() {
 
   if _is_digitalocean_registry; then
     echo "Detected digitalocean registry."
-    INPUT_USERNAME=$DOCTL_TOKEN
-    INPUT_PASSWORD=$DOCTL_TOKEN
+    INPUT_USERNAME=test
+    INPUT_PASSWORD=test
   fi
 
   # split tags (to allow multiple comma-separated tags)
