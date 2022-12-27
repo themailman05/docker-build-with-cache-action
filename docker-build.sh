@@ -67,8 +67,6 @@ _set_namespace() {
       [ "$NAMESPACE" ] || return 1
     elif _is_aws_ecr_public; then
       NAMESPACE=$(_aws_get_public_ecr_registry_name)
-    elif _is_digitalocean_registry; then
-      NAMESPACE=${INPUT_REGISTRY##*/}
     fi
     # aws-ecr (private) does not need a namespace
   fi
@@ -255,7 +253,7 @@ init_variables() {
     echo "Detected digitalocean registry."
     INPUT_USERNAME=$DOCTL_TOKEN
     INPUT_PASSWORD=$DOCTL_TOKEN
-    NAMESPACE=${INPUT_REGISTRY##*/}
+    NAMESPACE=$DO_REGISTRY_NAMESPACE
   fi
 
   # split tags (to allow multiple comma-separated tags)
